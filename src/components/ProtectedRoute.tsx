@@ -1,10 +1,15 @@
-import { useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import LoadingLayout from "./LoadingLayout";
 
 function ProtectedRoute() {
-  const [isAuth, setIsAuth] = useState(false);
+  const { isAuthenticated, isLoading } = useAuth();
 
-  return isAuth ? <Outlet /> : <Navigate to="/login" />;
+  return (
+    <LoadingLayout isLoading={isLoading}>
+      {isAuthenticated ? <Outlet /> : <Navigate to="/login" />}
+    </LoadingLayout>
+  );
 }
 
 export default ProtectedRoute;

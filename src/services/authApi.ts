@@ -4,46 +4,30 @@ import { axiosInstance } from "./axios";
 
 export const authApi = {
   login: async ({ email, password }: User) => {
-    try {
-      const { data } = await axiosInstance.post("/auth/login", {
-        email,
-        password,
-      });
+    const { data } = await axiosInstance.post("/auth/login", {
+      email,
+      password,
+    });
 
-      return data;
-    } catch (error: any) {
-      return error.message;
-    }
+    return data;
   },
   register: async ({ email, password, repassword }: UserRegister) => {
-    try {
-      const { data } = await axiosInstance.post("/auth/register", {
-        email,
-        password,
-        repassword,
-      });
+    const { data } = await axiosInstance.post("/auth/register", {
+      email,
+      password,
+      repassword,
+    });
 
-      return data;
-    } catch (error: any) {
-      return error.message;
-    }
+    return data;
   },
   logout: async () => {
-    try {
-      const { data } = await axiosInstance.get("/auth/logout");
+    const { data } = await axiosInstance.get("/auth/logout");
 
-      return data;
-    } catch (error: any) {
-      return error.message;
-    }
+    return data;
   },
   getRefreshToken: async () => {
-    try {
-      const { data } = await axiosInstance.get("/auth/refresh");
+    const { data } = await axiosInstance.get("/auth/refresh");
 
-      return data;
-    } catch (error: any) {
-      return error.message;
-    }
+    return data;
   },
 };
